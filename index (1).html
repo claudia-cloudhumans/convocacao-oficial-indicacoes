@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Convocação Oficial — Escale seu craque | Indicações</title>
+<meta name="description" content="Formulário interno de indicação de leads — Campanha Convocação Oficial: Campeão de Indicações." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --relva:#072719;          /* gramado escuro */
+    --relva-2:#0a3122;        /* gramado painel */
+    --relva-3:#0e3d2b;        /* card */
+    --linha:#1c5a3f;          /* linha de campo */
+    --ouro:#f2b705;           /* ouro da taça */
+    --ouro-claro:#ffd24a;
+    --ouro-fundo:#3a2d05;
+    --creme:#f5f1e3;          /* branco off do título */
+    --creme-mut:#cdd6cb;      /* texto secundário */
+    --verde-band:#1fae5a;     /* verde bandeira (acento) */
+    --azul-band:#2a4fb8;      /* azul bandeira */
+    --erro:#ff8a73;
+    --borda:rgba(245,241,227,.12);
+    --foco:0 0 0 3px rgba(242,183,5,.45);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Archivo",system-ui,sans-serif;
+    color:var(--creme);
+    background:
+      radial-gradient(120% 60% at 50% -10%, rgba(242,183,5,.10), transparent 60%),
+      radial-gradient(100% 70% at 50% 120%, rgba(31,174,90,.10), transparent 55%),
+      var(--relva);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+
+  /* ---------- HERO / placar ---------- */
+  header.hero{position:relative;overflow:hidden;padding:54px 0 30px;text-align:center}
+  .stadium{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 40% at 50% 0%, rgba(255,255,255,.10), transparent 60%);
+    opacity:.9;
+  }
+  .spark{position:absolute;top:0;left:0;width:100%;height:140px;z-index:0;opacity:.5;pointer-events:none}
+  .hero .wrap{position:relative;z-index:1}
+  .scoreboard{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ouro-claro);
+    border:1px solid var(--borda);
+    background:rgba(0,0,0,.25);
+    padding:8px 16px;border-radius:999px;
+  }
+  .scoreboard .dot{width:7px;height:7px;border-radius:50%;background:var(--verde-band);box-shadow:0 0 8px var(--verde-band)}
+  h1{
+    font-family:"Anton",sans-serif;font-weight:400;
+    margin:18px 0 6px;
+    font-size:clamp(2.7rem,11vw,4.6rem);
+    line-height:.92;letter-spacing:.01em;text-transform:uppercase;
+    color:var(--creme);
+    text-shadow:0 2px 0 rgba(0,0,0,.35);
+  }
+  h1 .gold{color:var(--ouro);display:block;
+    -webkit-text-stroke:1px rgba(0,0,0,.15);
+    text-shadow:0 3px 0 rgba(0,0,0,.30), 0 0 26px rgba(242,183,5,.25)}
+  .lede{max-width:42ch;margin:14px auto 0;color:var(--creme-mut);font-size:1.02rem}
+  .lede b{color:var(--creme);font-weight:700}
+
+  /* ---------- CARD / súmula ---------- */
+  main{position:relative;z-index:1;padding:8px 0 70px}
+  .pitch{
+    position:relative;
+    background:
+      linear-gradient(180deg, var(--relva-3), var(--relva-2));
+    border:1px solid var(--borda);
+    border-radius:22px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.04);
+    overflow:hidden;
+  }
+  .pitch .lines{position:absolute;inset:0;z-index:0;opacity:.5;pointer-events:none}
+  .pitch > .inner{position:relative;z-index:1;padding:26px 26px 30px}
+
+  /* faixa de cabeçalho estilo placar */
+  .card-head{
+    display:flex;align-items:center;gap:12px;
+    padding:0 0 18px;margin-bottom:6px;border-bottom:1px dashed var(--borda);
+  }
+  .badge{
+    width:44px;height:44px;flex:none;border-radius:12px;
+    background:radial-gradient(circle at 35% 30%, #ffe27a, var(--ouro) 60%, #b9870a);
+    display:grid;place-items:center;box-shadow:0 6px 14px -6px rgba(242,183,5,.7)}
+  .card-head h2{margin:0;font-family:"Anton",sans-serif;font-weight:400;font-size:1.45rem;
+    letter-spacing:.02em;text-transform:uppercase;color:var(--creme);line-height:1}
+  .card-head p{margin:3px 0 0;font-size:.82rem;color:var(--creme-mut)}
+
+  /* dica ICP */
+  details.icp{
+    margin:18px 0 6px;border:1px solid var(--borda);border-radius:14px;
+    background:rgba(0,0,0,.18);overflow:hidden;
+  }
+  details.icp > summary{
+    cursor:pointer;list-style:none;padding:13px 16px;
+    font-weight:700;font-size:.9rem;color:var(--ouro-claro);
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  details.icp > summary::-webkit-details-marker{display:none}
+  details.icp > summary .chev{transition:transform .25s ease;font-size:.8rem;opacity:.8}
+  details.icp[open] > summary .chev{transform:rotate(180deg)}
+  .icp-body{padding:2px 16px 16px;font-size:.86rem;color:var(--creme-mut)}
+  .icp-body ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+  .icp-body li{display:flex;gap:9px;align-items:flex-start}
+  .icp-body li::before{content:"⚽";font-size:.85rem;line-height:1.4;flex:none}
+  .icp-body .rule{margin-top:12px;padding-top:11px;border-top:1px dashed var(--borda);font-style:italic;opacity:.92}
+
+  /* fieldsets */
+  form{margin-top:22px}
+  fieldset{border:0;margin:0 0 12px;padding:0}
+  legend{
+    display:flex;align-items:center;gap:10px;width:100%;
+    font-size:.74rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--creme);margin-bottom:14px;padding:0;
+  }
+  legend .num{
+    font-family:"Anton",sans-serif;font-size:.9rem;letter-spacing:0;
+    width:26px;height:26px;border-radius:7px;display:grid;place-items:center;
+    background:rgba(242,183,5,.16);color:var(--ouro);border:1px solid rgba(242,183,5,.35);flex:none}
+  legend .line{height:1px;background:var(--borda);flex:1}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .field.full{grid-column:1 / -1}
+  label{font-size:.82rem;font-weight:600;color:var(--creme)}
+  label .req{color:var(--ouro);margin-left:2px}
+  label .opt{color:var(--creme-mut);font-weight:500;font-size:.74rem;margin-left:4px}
+  .hint{font-size:.74rem;color:var(--creme-mut);margin-top:-1px}
+  input,textarea{
+    font-family:inherit;font-size:.95rem;color:var(--creme);
+    background:rgba(0,0,0,.28);
+    border:1px solid var(--borda);border-radius:11px;
+    padding:12px 14px;width:100%;transition:border-color .15s, box-shadow .15s, background .15s;
+  }
+  textarea{resize:vertical;min-height:74px}
+  input::placeholder,textarea::placeholder{color:rgba(205,214,203,.45)}
+  input:hover,textarea:hover{border-color:rgba(245,241,227,.28)}
+  input:focus,textarea:focus{outline:none;border-color:var(--ouro);box-shadow:var(--foco);background:rgba(0,0,0,.4)}
+  .field.invalid input,.field.invalid textarea{border-color:var(--erro);box-shadow:0 0 0 3px rgba(255,138,115,.25)}
+  .err{font-size:.76rem;color:var(--erro);min-height:0;display:none}
+  .field.invalid .err{display:block}
+
+  /* botão */
+  .actions{margin-top:8px}
+  button.kick{
+    width:100%;cursor:pointer;border:0;border-radius:13px;
+    font-family:"Anton",sans-serif;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase;
+    color:#2a1f00;
+    background:linear-gradient(180deg,var(--ouro-claro),var(--ouro));
+    padding:16px 20px;
+    box-shadow:0 12px 24px -10px rgba(242,183,5,.7), inset 0 1px 0 rgba(255,255,255,.4);
+    transition:transform .12s ease, box-shadow .2s ease, filter .2s;
+    display:flex;align-items:center;justify-content:center;gap:12px;
+  }
+  button.kick:hover{transform:translateY(-2px);box-shadow:0 18px 30px -10px rgba(242,183,5,.75)}
+  button.kick:active{transform:translateY(0)}
+  button.kick:focus-visible{outline:none;box-shadow:var(--foco),0 12px 24px -10px rgba(242,183,5,.7)}
+  button.kick:disabled{filter:grayscale(.5) brightness(.8);cursor:wait;transform:none}
+  button .ball{font-size:1.1rem;transition:transform .25s}
+  button.kick:hover .ball{transform:translateX(5px) rotate(40deg)}
+
+  /* status */
+  .status{margin-top:18px;display:none;border-radius:13px;padding:16px 18px;font-size:.9rem;
+    border:1px solid var(--borda)}
+  .status.show{display:block;animation:pop .3s ease}
+  .status.ok{background:rgba(31,174,90,.14);border-color:rgba(31,174,90,.5);color:#bff0d2}
+  .status.ok b{color:#eafff2}
+  .status.err{background:rgba(255,138,115,.12);border-color:rgba(255,138,115,.5);color:#ffd6cc}
+  .status.info{background:rgba(242,183,5,.10);border-color:rgba(242,183,5,.4);color:var(--creme-mut)}
+  .status .big{font-family:"Anton",sans-serif;font-size:1.2rem;color:var(--creme);display:block;margin-bottom:3px;letter-spacing:.02em;text-transform:uppercase}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  footer{padding:24px 0 50px;text-align:center;color:var(--creme-mut);font-size:.76rem}
+  footer .strong{color:var(--creme);font-weight:600}
+
+  @media (max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .pitch > .inner{padding:20px 16px 24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto}
+    button.kick:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="stadium" aria-hidden="true"></div>
+  <svg class="spark" viewBox="0 0 800 140" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="#f2b705">
+      <rect x="60" y="20" width="6" height="14" transform="rotate(20 63 27)" opacity=".8"/>
+      <rect x="160" y="50" width="5" height="12" transform="rotate(-30 162 56)" opacity=".6"/>
+      <rect x="300" y="15" width="6" height="13" transform="rotate(40 303 21)" opacity=".7"/>
+      <rect x="520" y="44" width="5" height="12" transform="rotate(-20 522 50)" opacity=".6"/>
+      <rect x="660" y="22" width="6" height="14" transform="rotate(25 663 29)" opacity=".75"/>
+      <rect x="740" y="58" width="5" height="11" transform="rotate(-35 742 63)" opacity=".5"/>
+    </g>
+    <g fill="#1fae5a">
+      <rect x="110" y="64" width="5" height="11" transform="rotate(15 112 69)" opacity=".5"/>
+      <rect x="400" y="40" width="5" height="12" transform="rotate(-25 402 46)" opacity=".55"/>
+      <rect x="600" y="60" width="5" height="11" transform="rotate(30 602 65)" opacity=".5"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <span class="scoreboard"><span class="dot"></span>Cloud Humans · Convocação Oficial</span>
+    <h1>Escale seu<span class="gold">craque</span></h1>
+    <p class="lede">A Copa chegou e a seleção de indicações está montando o elenco. Indique uma empresa com perfil e <b>entre em campo pelos prêmios</b>.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="pitch">
+      <svg class="lines" viewBox="0 0 600 760" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke="#1c5a3f" stroke-width="2">
+          <rect x="14" y="14" width="572" height="732" rx="10"/>
+          <line x1="14" y1="380" x2="586" y2="380"/>
+          <circle cx="300" cy="380" r="74"/>
+          <circle cx="300" cy="380" r="3" fill="#1c5a3f"/>
+          <rect x="200" y="14" width="200" height="74"/>
+          <rect x="200" y="672" width="200" height="74"/>
+          <path d="M14 60 A 46 46 0 0 0 60 14"/>
+          <path d="M586 60 A 46 46 0 0 1 540 14"/>
+          <path d="M14 700 A 46 46 0 0 1 60 746"/>
+          <path d="M586 700 A 46 46 0 0 0 540 746"/>
+        </g>
+      </svg>
+
+      <div class="inner">
+        <div class="card-head">
+          <span class="badge" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3a2d05" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 4h10v3a5 5 0 0 1-10 0V4Z"/>
+              <path d="M17 5h2a2 2 0 0 1-2 3M7 5H5a2 2 0 0 0 2 3"/>
+              <path d="M12 12v3M9 20h6M10 17h4l1 3H9l1-3Z"/>
+            </svg>
+          </span>
+          <div>
+            <h2>Súmula da indicação</h2>
+            <p>Preencha a escalação. O time comercial valida e marca o gol.</p>
+          </div>
+        </div>
+
+        <details class="icp">
+          <summary>Antes de escalar: quem entra em campo? <span class="chev">▾</span></summary>
+          <div class="icp-body">
+            Pra indicação ser válida, a empresa precisa ter cara de cliente:
+            <ul>
+              <li>De <b>50 a 1.000 funcionários</b></li>
+              <li>Acima de <b>2.000 atendimentos/mês</b></li>
+              <li>Modelo B2B SMB, B2C, B2B2C ou D2C</li>
+              <li>E-commerce, SaaS, Fintech — ou os novos nichos: Telecom/ISP, Logística, EdTech, Saúde agendada, Utilities</li>
+            </ul>
+            <div class="rule">Regra do jogo: a empresa não pode estar em negociação ativa com o comercial nos últimos 3 meses.</div>
+          </div>
+        </details>
+
+        <form id="form" novalidate>
+          <fieldset>
+            <legend><span class="num">1</span> Quem está convocando <span class="line"></span></legend>
+            <div class="grid">
+              <div class="field">
+                <label for="indNome">Seu nome <span class="req">*</span></label>
+                <input id="indNome" name="indicador_nome" type="text" autocomplete="name" placeholder="Nome completo" required />
+                <span class="err" data-for="indNome">Conta pra gente quem está indicando.</span>
+              </div>
+              <div class="field">
+                <label for="indEmail">Seu e-mail interno <span class="req">*</span></label>
+                <input id="indEmail" name="indicador_email" type="email" autocomplete="email" placeholder="voce@cloudhumans.com" required />
+                <span class="err" data-for="indEmail">Use um e-mail válido — é por onde você recebe o prêmio.</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="num">2</span> O craque indicado <span class="line"></span></legend>
+            <div class="field full">
+              <label for="empresa">Empresa <span class="req">*</span></label>
+              <input id="empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da empresa indicada" required />
+              <span class="err" data-for="empresa">Qual empresa você está indicando?</span>
+            </div>
+            <div class="grid">
+              <div class="field">
+                <label for="contNome">Nome do contato <span class="req">*</span></label>
+                <input id="contNome" name="contato_nome" type="text" placeholder="Quem falar na empresa" required />
+                <span class="err" data-for="contNome">Informe o nome do contato.</span>
+              </div>
+              <div class="field">
+                <label for="contEmail">E-mail do contato <span class="req">*</span></label>
+                <input id="contEmail" name="contato_email" type="email" placeholder="contato@empresa.com" required />
+                <span class="err" data-for="contEmail">Informe um e-mail válido do contato.</span>
+              </div>
+              <div class="field">
+                <label for="contTel">Telefone do contato <span class="req">*</span></label>
+                <input id="contTel" name="contato_telefone" type="tel" inputmode="tel" placeholder="(11) 91234-5678" required />
+                <span class="err" data-for="contTel">Informe um telefone com DDD.</span>
+              </div>
+              <div class="field">
+                <label for="contLk">LinkedIn <span class="opt">(recomendado)</span></label>
+                <input id="contLk" name="contato_linkedin" type="url" placeholder="linkedin.com/in/contato" />
+                <span class="err" data-for="contLk">Cole o perfil do LinkedIn (ou deixe em branco).</span>
+              </div>
+            </div>
+            <div class="field full">
+              <label for="obs">Por que é um bom lead? <span class="opt">(opcional)</span></label>
+              <textarea id="obs" name="observacoes" placeholder="Contexto que ajuda o BDR: dor de atendimento, volume, quem é o decisor, como você conhece..."></textarea>
+              <span class="hint">Quanto mais contexto, mais fácil o craque avançar no funil.</span>
+            </div>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="kick" id="submitBtn">
+              Convocar craque <span class="ball" aria-hidden="true">⚽</span>
+            </button>
+          </div>
+
+          <div class="status" id="status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p><span class="strong">Indicou, pontuou.</span> A recompensa é cumulativa e você escolhe em qual cliente resgatar o voucher.</p>
+</footer>
+
+<script>
+/* ============================================================
+   AVISO NO SLACK   (ver README.md para o passo a passo)
+   ------------------------------------------------------------
+   Cole em CONFIG.slackWebhook a URL de um Incoming Webhook do Slack
+   apontando pro canal (ou DM) onde você quer receber os avisos.
+   Cada indicação enviada vira uma mensagem formatada com os dados
+   do lead. Sem Airtable por enquanto — é só notificação.
+
+   O Slack não devolve cabeçalho CORS para o navegador, então o
+   envio é feito em no-cors (dispara e não lê a resposta) e a página
+   mostra um sucesso otimista. Enquanto a URL estiver vazia, a página
+   fica em "modo de teste": valida tudo e mostra a mensagem no
+   console (F12) sem enviar.
+   ============================================================ */
+const CONFIG = {
+  slackWebhook: "",   // <-- cole aqui a URL do Incoming Webhook do Slack
+  campanha: "Convocação Oficial — Indicação interna (Copa do Mundo)"
+};
+
+const form = document.getElementById("form");
+const statusEl = document.getElementById("status");
+const submitBtn = document.getElementById("submitBtn");
+
+const validators = {
+  indNome:  v => v.trim().length >= 2,
+  indEmail: v => isEmail(v),
+  empresa:  v => v.trim().length >= 2,
+  contNome: v => v.trim().length >= 2,
+  contEmail:v => isEmail(v),
+  contTel:  v => digits(v).length >= 10,
+  contLk:   v => v.trim() === "" || isUrlish(v)
+};
+
+function isEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+function digits(v){ return (v||"").replace(/\D/g,""); }
+function isUrlish(v){ return /\.[a-z]{2,}/i.test(v.trim()); }
+
+function setField(id, ok){
+  const field = document.getElementById(id).closest(".field");
+  field.classList.toggle("invalid", !ok);
+  return ok;
+}
+
+/* máscara leve de telefone BR */
+const tel = document.getElementById("contTel");
+tel.addEventListener("input", () => {
+  let d = digits(tel.value).slice(0,11);
+  let out = d;
+  if (d.length > 2 && d.length <= 6) out = `(${d.slice(0,2)}) ${d.slice(2)}`;
+  else if (d.length > 6 && d.length <= 10) out = `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`;
+  else if (d.length > 10) out = `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+  tel.value = out;
+});
+
+/* limpa o erro ao corrigir */
+form.querySelectorAll("input,textarea").forEach(el => {
+  el.addEventListener("input", () => {
+    if (validators[el.id]) setField(el.id, validators[el.id](el.value));
+  });
+});
+
+function normalizeLinkedIn(v){
+  v = v.trim();
+  if (!v) return "";
+  if (!/^https?:\/\//i.test(v)) v = "https://" + v.replace(/^\/+/,"");
+  return v;
+}
+
+function buildPayload(){
+  /* dados planos da indicação — usados pra montar a mensagem do Slack
+     e pra registrar no console em modo de teste. */
+  return {
+    campanha: CONFIG.campanha,
+    enviado_em: new Date().toISOString(),
+    indicador_nome:  val("indNome"),
+    indicador_email: val("indEmail").toLowerCase(),
+    empresa:          val("empresa"),
+    contato_nome:     val("contNome"),
+    contato_email:    val("contEmail").toLowerCase(),
+    contato_telefone: val("contTel"),
+    contato_linkedin: normalizeLinkedIn(val("contLk")),
+    observacoes:      val("obs")
+  };
+}
+function val(id){ return document.getElementById(id).value; }
+
+/* Slack mrkdwn exige escapar & < > */
+function sx(s){ return (s||"—").toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function buildSlackMessage(p){
+  const lk = p.contato_linkedin ? `<${p.contato_linkedin}|ver perfil>` : "—";
+  const quando = new Date().toLocaleString("pt-BR");
+  const blocks = [
+    { type:"header", text:{ type:"plain_text", text:"⚽ Nova indicação — Convocação Oficial", emoji:true } },
+    { type:"section", fields:[
+      { type:"mrkdwn", text:`*Empresa:*\n${sx(p.empresa)}` },
+      { type:"mrkdwn", text:`*Contato:*\n${sx(p.contato_nome)}` },
+      { type:"mrkdwn", text:`*E-mail:*\n${sx(p.contato_email)}` },
+      { type:"mrkdwn", text:`*Telefone:*\n${sx(p.contato_telefone)}` },
+      { type:"mrkdwn", text:`*LinkedIn:*\n${lk}` },
+      { type:"mrkdwn", text:`*Indicado por:*\n${sx(p.indicador_nome)} (${sx(p.indicador_email)})` }
+    ]}
+  ];
+  if (p.observacoes) blocks.push({ type:"section", text:{ type:"mrkdwn", text:`*Por que é um bom lead:*\n${sx(p.observacoes)}` }});
+  blocks.push({ type:"context", elements:[{ type:"mrkdwn", text:`${sx(p.campanha)} · ${quando}` }]});
+  return { text:`Nova indicação: ${sx(p.empresa)} (indicado por ${sx(p.indicador_nome)})`, blocks };
+}
+
+function showStatus(type, html){
+  statusEl.className = "status show " + type;
+  statusEl.innerHTML = html;
+  statusEl.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  let ok = true;
+  for (const id in validators){
+    const valid = setField(id, validators[id](val(id)));
+    if (!valid) ok = false;
+  }
+  if (!ok){
+    showStatus("err", "<span class='big'>Falta completar a escalação</span>Revise os campos destacados e tente de novo.");
+    const firstBad = form.querySelector(".field.invalid input, .field.invalid textarea");
+    if (firstBad) firstBad.focus();
+    return;
+  }
+
+  const payload = buildPayload();
+  const message = buildSlackMessage(payload);
+
+  /* modo de teste — webhook do Slack ainda não conectado */
+  if (!CONFIG.slackWebhook){
+    console.log("[Indicação] dados:", payload);
+    console.log("[Indicação] mensagem do Slack:", message);
+    showStatus("info", "<span class='big'>Modo de teste</span>O formulário está validado e funcionando. Cole a URL do Incoming Webhook em <b>CONFIG.slackWebhook</b> para começar a avisar no Slack. (A prévia da mensagem foi registrada no console.)");
+    return;
+  }
+
+  submitBtn.disabled = true;
+  const original = submitBtn.innerHTML;
+  submitBtn.innerHTML = "Enviando…";
+
+  try{
+    /* Slack não devolve CORS pro navegador: dispara em no-cors,
+       sem Content-Type custom (evita preflight). */
+    await fetch(CONFIG.slackWebhook, {
+      method:"POST",
+      mode:"no-cors",
+      body: JSON.stringify(message)
+    });
+    okState();
+  }catch(err){
+    console.error(err);
+    showStatus("err", "<span class='big'>A bola não entrou</span>Não conseguimos enviar agora. Tente novamente em instantes — se persistir, avise o time comercial.");
+  }finally{
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = original;
+  }
+});
+
+function okState(){
+  showStatus("ok", "<span class='big'>Craque convocado! ⚽</span>Indicação enviada e o time já foi avisado no Slack. Conforme a reunião acontecer, você entra na disputa pelos prêmios.");
+  form.reset();
+}
+</script>
+</body>
+</html>
